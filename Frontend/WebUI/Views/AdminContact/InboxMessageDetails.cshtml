@@ -1,0 +1,27 @@
+﻿@model InboxMessageDetailDto
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="read-content">
+    <div class="media pt-5">
+        <img class="mr-3 rounded-circle" src="~/adminweb/images/avatar/1.jpg">
+        <div class="media-body">
+            <h5 class="m-b-3">@Model.Name</h5>
+            <p class="m-b-2">@Model.Date</p>
+        </div>
+
+    </div>
+    <hr>
+    <div class="media mb-4 mt-1">
+        <div class="media-body">
+            <span class="float-right">@Model.Date</span>
+            <h4 class="m-0 text-primary">@Model.Subject</h4><small class="text-muted">To:Me</small>
+        </div>
+    </div>
+    <p>
+       @Model.Message
+    </p>
+</div>
+

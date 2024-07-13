@@ -1,0 +1,55 @@
+﻿@model List<ResultBookingDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+@{
+    int count = 0;
+}
+
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                <h4>Rezervasyonlar</h4>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ad Soyad</th>
+                            <th>Mail</th>
+                            <th>Giriş Tarihi</th>
+                            <th>Çıkış Tarihi</th>
+                            <th>Yetişkin Sayısı</th>
+                            <th>Çocuk Sayısı</th>
+                            <th>Oda Sayısı</th>
+                            <th>Müşteri Talebi</th>
+                            <th>Rezervasyon Durumu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in Model)
+                        {
+                            <tr>
+                                <th>@(count+=1)</th>
+                                <td>@item.Name</td>
+                                <td>@item.Mail</td>
+                                <td>@(((DateTime)item.CheckIn).ToString("dd-MMM-yyyy"))</td>
+                                <td>@(((DateTime)item.CheckOut).ToString("dd-MMM-yyyy"))</td>
+                                <td>@item.AdultCount</td>
+                                <td>@item.ChildCount</td>
+                                <td>@item.RoomCount</td>
+                                <td>@item.SpecialRequest</td>
+                                <td><span class="badge badge-primary px-2">@item.Status</span></td>
+                                <td><a href="/BookingAdmin/BookingStatusApproved/@item.id" class="btn btn-outline-primary btn-sm">Onayla</a></td>
+                                <td><a href="" class="btn btn-outline-danger btn-sm">İptal Et</a></td>
+                                <td><a href="" class="btn btn-outline-warning btn-sm">Beklet</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+

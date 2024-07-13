@@ -1,0 +1,49 @@
+﻿@model List<ResultRoomDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+@{
+    int count = 0;
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Oda Numarası</th>
+            <th>Oda Resmi</th>
+            <th>Fiyat</th>
+            <th>Başlık</th>
+            <th>Yatak Sayısı</th>
+            <th>Banyo Sayısı</th>
+            <th>Wifi</th>
+            <th>Açıklama</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            count++;
+            <tr>
+                <th>@count</th>
+                <td>@item.RoomNumber</td>
+                <td>@item.RoomCoverImage</td>
+                <td>@item.Price</td>
+                <td>@item.Title</td>
+                <td>@item.BedCount</td>
+                <td>@item.BathCount</td>
+                <td>@item.Wifi</td>
+                <td>@item.Description</td>
+                <td>
+                    <a href="/AdminRoom/Update/@item.id" class="btn btn-outline-primary btn-sm">Güncelle</a>
+                </td>
+                <td>
+                    <a href="/AdminRoom/Delete/@item.id" class="btn btn-outline-danger btn-sm">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/AdminRoom/Add" class="btn btn-outline-success">Oda Ekle</a>

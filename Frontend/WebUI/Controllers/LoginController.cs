@@ -40,7 +40,7 @@ namespace WebUI.Controllers
                         var token = await response.Content.ReadAsStringAsync();
                         HttpContext.Session.SetString("AuthToken", token);
                         var token2 = HttpContext.Session.GetString("AuthToken");
-                        return RedirectToAction("Index", "Staff");
+                        return RedirectToAction("Index", "Dashboard");
                     }
                 else
                 {

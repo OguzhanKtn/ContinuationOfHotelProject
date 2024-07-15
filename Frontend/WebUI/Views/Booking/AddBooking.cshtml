@@ -30,7 +30,13 @@
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" placeholder="Adınız Soyadınız" asp-for="Name">
-                                    <label for="name">Adınız Soyadınız</label>
+                                    <label for="name">Adınız</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="Soyadınız" asp-for="Surname">
+                                    <label for="name">Soyadınız</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -49,6 +55,18 @@
                                 <div class="form-floating date" id="date4" data-target-input="nearest">
                                     <input type="text" class="form-control datetimepicker-input" placeholder="Çıkış Tarihi" data-target="#date4" data-toggle="datetimepicker" asp-for="CheckOut" />
                                     <label for="checkout">Çıkış Tarihi</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="Şehir"  asp-for=City />
+                                    <label for="City">Şehir</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" placeholder="Ülke" asp-for=Country />
+                                    <label for="Country">Ülke</label>
                                 </div>
                             </div>
                             <div class="col-md-6">

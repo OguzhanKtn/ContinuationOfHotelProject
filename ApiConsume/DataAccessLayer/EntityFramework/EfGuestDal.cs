@@ -10,18 +10,17 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EfRoomDal : GenericRepository<Room>, IRoomDal
+    public class EfGuestDal : GenericRepository<Guest>, IGuestDal
     {
-        private readonly Context _context;
-        public EfRoomDal(Context context) : base(context)
+        private readonly Context _context; 
+        public EfGuestDal(Context context) : base(context)
         {
             _context = context;
         }
-        public int RoomCount()
+
+        public int GuestCount()
         {
-            
-            var value = _context.Rooms.Count();
-            return value;
+            return _context.Guests.Count();
         }
     }
 }

@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface IStaffService : IGenericService<Staff>
+    public interface IGuestService:IGenericService<Guest>
     {
-        int TGetStaffCount();
-        List<Staff> TLast4Staff();
+        public int GetCount();
     }
 }

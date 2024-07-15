@@ -39,6 +39,10 @@ namespace HotelProject.WebApi
             services.AddScoped<IMessageCategoryDal, EfMessageCategoryDal>();
             services.AddScoped<IMessageCategoryService, MessageCategoryManager>();
 
+            services.AddScoped<IGuestDal, EfGuestDal>();
+            services.AddScoped<IGuestService, GuestManager>();
+
+
             return services;
         }
     }

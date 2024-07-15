@@ -33,8 +33,12 @@ namespace DataAccessLayer.Concrete
 
             builder.Entity<Guest>(entry =>
             {
-                entry.ToTable("Guests", tb => tb.HasTrigger("GuestIncrease"));
-                entry.ToTable("Guests", tb => tb.HasTrigger("GuestDecrease"));
+                entry.ToTable("Guests", tb => tb.HasTrigger("CustomerIncrease"));
+                entry.ToTable("Guests", tb => tb.HasTrigger("CustomerDecrease"));
+            });
+            builder.Entity<Booking>(entry =>
+            {
+                entry.ToTable("Bookings", tb => tb.HasTrigger("AddGuest"));
             });
         }
         public DbSet<Room> Rooms { get; set; }

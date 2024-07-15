@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Abstract
+namespace DataAccessLayer.Abstract
 {
-    public interface IStaffService : IGenericService<Staff>
+    public interface IGuestDal : IGenericDal<Guest>
     {
-        int TGetStaffCount();
-        List<Staff> TLast4Staff();
+        int GuestCount();
     }
 }

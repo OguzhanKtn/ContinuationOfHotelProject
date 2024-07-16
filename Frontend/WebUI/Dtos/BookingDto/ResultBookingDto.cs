@@ -4,6 +4,7 @@
     (
          int id,
          string Name, 
+         string Surname,
          string Mail, 
          DateTime CheckIn, 
          DateTime CheckOut,

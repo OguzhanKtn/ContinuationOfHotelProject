@@ -30,7 +30,7 @@ namespace HotelProject.WebApi.Controllers
             _TestimonialService.Insert(testimonial);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public IActionResult DeleteTestimonial(int id)
         {
@@ -38,7 +38,7 @@ namespace HotelProject.WebApi.Controllers
             _TestimonialService.Delete(value);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public IActionResult UpdateTestimonial(Testimonial testimonial)
         {

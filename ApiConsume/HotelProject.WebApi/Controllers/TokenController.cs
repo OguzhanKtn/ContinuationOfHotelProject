@@ -2,6 +2,7 @@
 using DtoLayer.Dtos.LoginRequestDto;
 using EntityLayer.Concrete;
 using HotelProject.WebApi.Jwt;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ namespace HotelProject.WebApi.Controllers
         {
             _signInManager = signInManager;
         }
-
+        
         [HttpPost]
         public async Task<IActionResult> Token(LoginRequestDto request)
         {

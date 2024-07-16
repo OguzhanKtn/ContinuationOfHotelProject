@@ -26,7 +26,7 @@ namespace HotelProject.WebApi.Controllers
             var values = _roomService.GetAll();
             return Ok(values);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult AddRoom(AddRoomDto roomDto) 
         {
@@ -38,7 +38,7 @@ namespace HotelProject.WebApi.Controllers
             _roomService.Insert(values);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         [HttpDelete("{id}")]
         public IActionResult DeleteRoom(int id)
         {
@@ -46,7 +46,7 @@ namespace HotelProject.WebApi.Controllers
             _roomService.Delete(value);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public IActionResult UpdateRoom(UpdateRoomDto roomDto) 
         { 

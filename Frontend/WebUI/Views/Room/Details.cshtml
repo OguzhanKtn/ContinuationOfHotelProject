@@ -1,0 +1,132 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+    }
+
+    .gallery-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-image {
+        position: relative;
+        width: 80%;
+        max-width: 600px;
+    }
+
+        .main-image img {
+            width: 100%;
+            height: auto;
+        }
+
+    .nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .prev-btn {
+        left: 0;
+    }
+
+    .next-btn {
+        right: 0;
+    }
+
+    .thumbnail-container {
+        display: flex;
+        margin-top: 10px;
+    }
+
+    .thumbnail {
+        width: 80px;
+        height: 60px;
+        margin: 0 5px;
+        cursor: pointer;
+        opacity: 0.6;
+    }
+
+        .thumbnail:hover {
+            opacity: 1;
+        }
+
+    .selected {
+        opacity: 1;
+        border: 2px solid #000;
+    }
+</style>
+<body>
+    <div class="gallery-container">
+        <div class="main-image">
+            <button class="nav-btn prev-btn" onclick="showPrevImage()">&#10094;</button>
+            <img id="current-image" src="/images/img1.jpg" alt="Main Image">
+            <button class="nav-btn next-btn" onclick="showNextImage()">&#10095;</button>
+        </div>
+        <div class="thumbnail-container">
+            <img class="thumbnail" src="/images/img1.jpg" alt="Thumbnail 1" onclick="selectImage(0)">
+            <img class="thumbnail" src="/images/img2.jpg" alt="Thumbnail 2" onclick="selectImage(1)">
+            <img class="thumbnail" src="/images/img3.jpg" alt="Thumbnail 3" onclick="selectImage(2)">
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const images = [
+            '/images/img1.jpg',
+            '/images/img2.jpg',
+            '/images/img3.jpg'
+        ];
+
+        function showImage(index) {
+            const mainImage = document.getElementById('current-image');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            currentIndex = index;
+            mainImage.src = images[index];
+            thumbnails.forEach((thumb, idx) => {
+                thumb.classList.toggle('selected', idx === index);
+            });
+        }
+
+        function showPrevImage() {
+            const prevIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+            showImage(prevIndex);
+        }
+
+        function showNextImage() {
+            const nextIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+            showImage(nextIndex);
+        }
+
+        function selectImage(index) {
+            showImage(index);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showImage(0);
+        });
+    </script>
+</body>
+</html>

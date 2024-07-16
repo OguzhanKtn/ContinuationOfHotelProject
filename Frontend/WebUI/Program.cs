@@ -39,6 +39,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
 }
 app.UseStatusCodePagesWithReExecute("/ErrorPage/{0}");
+app.UseStaticFiles();
 app.UseRouting(); 
 app.UseSession();
 app.UseAuthorization();

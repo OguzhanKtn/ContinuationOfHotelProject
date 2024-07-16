@@ -16,28 +16,28 @@ namespace HotelProject.WebApi.Controllers
         {
             _sendService = sendService;
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult SendMessageList()
         {
             var values = _sendService.GetAll();
             return Ok(values);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public IActionResult GetSendMessage(int id)
         {
             var value = _sendService.GetByID(id);
             return Ok(value);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult AddSendMessage(SendMessage sendMessage)
         {
             _sendService.Insert(sendMessage);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public IActionResult DeleteSendMessage(int id)
         {
@@ -45,7 +45,7 @@ namespace HotelProject.WebApi.Controllers
             _sendService.Delete(value);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public IActionResult UpdateSendMessage(SendMessage sendMessage)
         {
@@ -53,7 +53,7 @@ namespace HotelProject.WebApi.Controllers
             return Ok();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetSendMessageCount")]
         public IActionResult GetSendMessageCount()
         {

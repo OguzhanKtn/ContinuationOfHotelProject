@@ -18,24 +18,8 @@ namespace DataAccessLayer.EntityFramework
             _context = context;
         }
 
-        public void BookingStatusChangeApproved(Booking booking)
+        public void BookingStatusChangeApproved(int id)
         {
-            var values = _context.Bookings.Where(x => x.Id == booking.Id).FirstOrDefault();
-            values.Status = "Onaylandı";
-            _context.SaveChanges();
-        }
-
-        public void BookingStatusChangeApproved2(int id)
-        {
-           
-            var values = _context.Bookings.Find(id);
-            values.Status = "Onaylandı";
-            _context.SaveChanges();
-        }
-
-        public void BookingStatusChangeApproved3(int id)
-        {
-           
             var values = _context.Bookings.Find(id);
             values.Status = "Onaylandı";
             _context.SaveChanges();

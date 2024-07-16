@@ -17,7 +17,7 @@ namespace HotelProject.WebApi.Controllers
             _contactService = contactService;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("/InboxList")]
         public IActionResult InboxListContact()
@@ -35,7 +35,7 @@ namespace HotelProject.WebApi.Controllers
             
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("/InboxListByCategory/{id}")]
         public IActionResult InboxListByCategory(int id)
@@ -52,7 +52,7 @@ namespace HotelProject.WebApi.Controllers
             }
 
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public IActionResult MessageDetail(int id)
         {
@@ -67,7 +67,7 @@ namespace HotelProject.WebApi.Controllers
             _contactService.Insert(contact);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetContactCount")]
         public IActionResult GetContactCount()
         {

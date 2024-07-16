@@ -9,11 +9,11 @@ using WebUI.Dtos.BookingDto;
 namespace WebUI.Controllers
 {
    
-    public class BookingAdminController : Controller
+    public class AdminBookingController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public BookingAdminController(IHttpClientFactory httpClientFactory)
+        public AdminBookingController(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -44,14 +44,45 @@ namespace WebUI.Controllers
             {
                 return Unauthorized();
             }
-            Booking booking = GetBooking(id).Result;
-            booking.Status = "Onaylandı";
             var client = _httpClientFactory.CreateClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            var jsonData = JsonConvert.SerializeObject(booking);
+            var response = await client.GetAsync($"http://localhost:10881/api/Booking/BookingAproved?id={id}");
 
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PutAsync($"http://localhost:10881/api/Booking", stringContent);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> BookingStatusCancel(int id)
+        {
+            var token = HttpContext.Session.GetString("AuthToken");
+            if (string.IsNullOrEmpty(token))
+            {
+                return Unauthorized();
+            }
+            var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            var response = await client.GetAsync($"http://localhost:10881/api/Booking/BookingCancel?id={id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> BookingStatusWait(int id)
+        {
+            var token = HttpContext.Session.GetString("AuthToken");
+            if (string.IsNullOrEmpty(token))
+            {
+                return Unauthorized();
+            }
+            var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            var response = await client.GetAsync($"http://localhost:10881/api/Booking/BookingWait?id={id}");
 
             if (response.IsSuccessStatusCode)
             {

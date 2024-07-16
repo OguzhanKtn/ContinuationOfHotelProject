@@ -17,7 +17,7 @@ namespace HotelProject.WebApi.Controllers
         {
             _bookingService = bookingService;
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult BookingList()
         {
@@ -32,7 +32,7 @@ namespace HotelProject.WebApi.Controllers
             return Ok();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public IActionResult DeleteBooking(int id)
         {
@@ -41,42 +41,42 @@ namespace HotelProject.WebApi.Controllers
             return Ok();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public IActionResult UpdateBooking(Booking booking)
         {
             _bookingService.Update(booking);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public IActionResult GetBooking(int id)
         {
            var value = _bookingService.GetByID(id);
             return Ok(value);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet("Last6Booking")]
         public IActionResult Last6Booking()
         {
             var values = _bookingService.TLast6Bookings();
             return Ok(values);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet("BookingAproved")]
         public IActionResult BookingAproved(int id)
         {
-            _bookingService.TBookingStatusChangeApproved3(id);
+            _bookingService.TBookingStatusChangeApproved(id);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet("BookingCancel")]
         public IActionResult BookingCancel(int id)
         {
             _bookingService.TBookingStatusChangeCancel(id);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet("BookingWait")]
         public IActionResult BookingWait(int id)
         {

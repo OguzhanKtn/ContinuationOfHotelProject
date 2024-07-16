@@ -23,14 +23,14 @@ namespace HotelProject.WebApi.Controllers
             var values = _servicesServices.GetAll();
             return Ok(values);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult AddServices(Services services)
         {
             _servicesServices.Insert(services);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public IActionResult DeleteServices(int id)
         {
@@ -38,7 +38,7 @@ namespace HotelProject.WebApi.Controllers
             _servicesServices.Delete(value);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public IActionResult UpdateServices(Services services)
         {

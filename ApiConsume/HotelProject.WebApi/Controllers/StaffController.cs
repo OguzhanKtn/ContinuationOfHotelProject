@@ -23,14 +23,14 @@ namespace HotelProject.WebApi.Controllers
             var values = _staffService.GetAll();
             return Ok(values);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult AddStaff(Staff staff)
         {
             _staffService.Insert(staff);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public IActionResult DeleteStaff(int id)
         {
@@ -38,7 +38,7 @@ namespace HotelProject.WebApi.Controllers
             _staffService.Delete(value);
             return Ok();
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public IActionResult UpdateStaff(Staff staff)
         {
@@ -52,7 +52,7 @@ namespace HotelProject.WebApi.Controllers
            var value = _staffService.GetByID(id);
             return Ok(value);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet("Last4Staff")]
         public IActionResult Last4Staff()
         {

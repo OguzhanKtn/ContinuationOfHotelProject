@@ -1,0 +1,43 @@
+﻿@model CreateRoomDto
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<form method="post">
+    <label>Oda Numarası</label>
+    <input type="text" class="form-control" asp-for="RoomNumber" />
+    <span asp-validation-for="RoomNumber" class="text-danger"></span>
+    <br />
+    <label>Oda Resmi</label>
+    <input type="text" class="form-control" asp-for="RoomCoverImage" />
+    <span asp-validation-for="RoomCoverImage" class="text-danger"></span>
+    <br />
+    <label>Fiyat</label>
+    <input type="text" class="form-control" asp-for="Price" />
+    <span asp-validation-for="Price" class="text-danger"></span>
+    <br />
+    <label>Başlık</label>
+    <input type="text" class="form-control" asp-for="Title" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+    <br />
+    <label>Yatak Sayısı</label>
+    <input type="text" class="form-control" asp-for="BedCount" />
+    <span asp-validation-for="BedCount" class="text-danger"></span>
+    <br />
+    <label>Banyo Sayısı</label>
+    <input type="text" class="form-control" asp-for="BathCount" />
+    <span asp-validation-for="BathCount" class="text-danger"></span>
+    <br />
+    <label>Wifi</label>
+    <input type="text" class="form-control" asp-for="Wifi" />
+    <span asp-validation-for="Wifi" class="text-danger"></span>
+    <br />
+    <label>Description</label>
+    <input type="text" class="form-control" asp-for="Description" />
+    <span asp-validation-for="Description" class="text-danger"></span>
+    <br />
+    <button type="submit" class="btn btn-outline-primary">Kaydet</button>
+</form>
+
+

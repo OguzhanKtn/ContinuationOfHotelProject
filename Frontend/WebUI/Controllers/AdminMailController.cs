@@ -1,4 +1,4 @@
-﻿using MailKit.Net.Smtp;
+using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
@@ -37,7 +37,7 @@ namespace WebUI.Controllers
 
             SmtpClient smtpClient = new SmtpClient();
             smtpClient.Connect("smtp.gmail.com", 587, false);
-            smtpClient.Authenticate("oguzhanktn0@gmail.com", "srsv rhzp fgvv bxsj");
+            smtpClient.Authenticate("oguzhanktn0@gmail.com", "");
             smtpClient.Send(message);
             smtpClient.Disconnect(true);
 
